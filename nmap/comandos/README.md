@@ -34,6 +34,7 @@ Detecta estados de puertos TCP usando diferentes técnicas.
 | -sX  | Ataque XMAS. Activa los flags FIN, URG y PUSH. Si el puerto está cerrado, se espera un RST; si está abierto, no hay respuesta. |
 | -sN  | No activa ningún flag de la cabecera TCP, se usa para análisis sigiloso.                                                       |
 | -sA  | Envía un TCP ACK y se espera un RST. Utilizado para determinar si los puertos están filtrados.                                 |
+| -Pn  | útil en redes donde los hosts no responden a los sondas de ping o donde el bloqueo de ping está habilitado                     |
 
 #### Notas
 * Cuando se dice que un puerto está "filtrado" en el contexto de la seguridad de redes, significa que el tráfico dirigido a ese puerto está siendo bloqueado o filtrado por un firewall o algún otro dispositivo de seguridad de red.

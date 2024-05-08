@@ -1,0 +1,9 @@
+# Nmap 7.95 scan initiated Tue May  7 20:05:20 2024 as: nmap -sA -sV -O -oN nmap_results\\nmap_output_sA_2024-05-07_20-05-20.txt ingenieriaoceanica.uv.cl
+Nmap scan report for ingenieriaoceanica.uv.cl (200.14.249.49)
+Host is up (0.060s latency).
+All 1000 scanned ports on ingenieriaoceanica.uv.cl (200.14.249.49) are in ignored states.
+Not shown: 1000 filtered tcp ports (no-response)
+Too many fingerprints match this host to give specific OS details
+
+OS and Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+# Nmap done at Tue May  7 20:05:35 2024 -- 1 IP address (1 host up) scanned in 15.72 seconds
