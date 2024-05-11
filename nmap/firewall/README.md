@@ -1,7 +1,3 @@
-Voy a ampliar la sección de `Masquerade` y agregar ejemplos adicionales. Aquí tienes el README mejorado:
-
----
-
 ### README: Configuración de Reglas de Firewall con `iptables`
 
 Este documento tiene como objetivo proporcionar una comprensión clara de las reglas de firewall utilizando `iptables`, cómo implementarlas, y ofrecer ejemplos prácticos para futuras configuraciones. 
@@ -176,10 +172,3 @@ iptables -A FORWARD -i eth0 -o eth1 -j ACCEPT
   iptables-restore < /etc/iptables/rules.v4
   ip6tables-restore < /etc/iptables/rules.v6
   ```
-  
-- Prueba las reglas en un entorno controlado antes de aplicarlas en producción.
-- Mantén un enfoque proactivo en la seguridad.
-
-**Referencia:**
-- `man iptables`: Página de manual para más información.
-
