@@ -1,17 +1,15 @@
-Voy a ampliar la sección de `Masquerade` y agregar ejemplos adicionales. Aquí tienes el README mejorado:
-
----
-
 ### README: Configuración de Reglas de Firewall con `iptables`
 
 Este documento tiene como objetivo proporcionar una comprensión clara de las reglas de firewall utilizando `iptables`, cómo implementarlas, y ofrecer ejemplos prácticos para futuras configuraciones. 
 
 ### Índice
-* [Introducción a `iptables`](#introducción-a-iptables)
+- [README: Configuración de Reglas de Firewall con `iptables`](#readme-configuración-de-reglas-de-firewall-con-iptables)
+- [Índice](#índice)
+- [Introducción a `iptables`](#introducción-a-iptables)
 - [Estructura de las Reglas de `iptables`](#estructura-de-las-reglas-de-iptables)
-* [Reglas Prácticas de Ejemplo](#reglas-prácticas-de-ejemplo)
+- [Reglas Prácticas de Ejemplo](#reglas-prácticas-de-ejemplo)
 - [Configuraciones Avanzadas](#configuraciones-avanzadas)
-
+- [Conclusión](#conclusión)
 
 ### Introducción a `iptables`
 
@@ -155,3 +153,23 @@ iptables -A FORWARD -i eth1 -o eth0 -j ACCEPT
 # Permite el reenvío desde eth0 a eth1
 iptables -A FORWARD -i eth0 -o eth1 -j ACCEPT
 ```
+
+### Conclusión
+
+`iptables` proporciona una manera poderosa de controlar el tráfico de red. Ya sea que estés redirigiendo tráfico, bloqueando IPs específicas o creando un firewall avanzado, estas reglas básicas te proporcionan un punto de partida sólido.
+
+**Consejos Adicionales:**
+- Guarda tus reglas para evitar perderlas tras un reinicio:
+  ```bash
+ 
+
+ iptables-save > /etc/iptables/rules.v4
+  ip6tables-save > /etc/iptables/rules.v6
+  ```
+  
+- Restaura las reglas guardadas:
+  ```bash
+  iptables-restore < /etc/iptables/rules.v4
+  ip6tables-restore < /etc/iptables/rules.v6
+  ```
+
