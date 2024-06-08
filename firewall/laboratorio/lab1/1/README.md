@@ -44,7 +44,7 @@ iptables -A INPUT -s 192.168.0.1 -j ACCEPT
 iptables -A INPUT -p tcp -s 192.168.0.2 --dport 3306 -j ACCEPT
 
 # Permitir acceso al puerto FTP (21) para el operador (ejemplo: 192.168.0.3)
-iptables -A INPUT -p tcp -s 192.168.0.3 --dport 21 -j ACCEPT
+iptables -A INPUT -p tcp -s 192.168.0.3 --dport 20,21 -j ACCEPT
 """
 Necesidad del Servicio FTP:
 Si el operador necesita transferir archivos hacia o desde el servidor, se requiere permitir el acceso al puerto 21 donde el servidor FTP escucha las conexiones de control.
