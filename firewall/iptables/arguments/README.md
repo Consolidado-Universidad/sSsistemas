@@ -16,14 +16,14 @@
 
 ## Cadenas (Chains)
 
-| Cadena      | Significado                                                      |
-| ----------- | ---------------------------------------------------------------- |
-| INPUT       | Paquetes que llegan a la máquina                                 |
-| OUTPUT      | Paquetes que salen de la máquina                                 |
-| FORWARD     | Paquetes que pasan a través de la máquina                        |
-| PREROUTING  | Modifica paquetes antes de enrutarlos (se usa con tabla `nat`)   |
-| POSTROUTING | Modifica paquetes después de enrutarlos (se usa con tabla `nat`) |
-| DOCKER      | Cadena utilizada por Docker para gestionar reglas específicas    |
+| Cadena      | Significado                                                                                                                         |
+| ----------- | ----------------------------------------------------------------------------------------------------------------------------------- |
+| INPUT       | Paquetes que llegan a la máquina                                                                                                    |
+| OUTPUT      | Paquetes que salen de la máquina, antes de que sean enrutados.                                                                      |
+| FORWARD     | Paquetes que pasan a través de la máquina                                                                                           |
+| PREROUTING  | Modifica paquetes antes de enrutarlos (se usa con tabla `nat`)                                                                      |
+| POSTROUTING | Modifica los paquetes después de que hayan sido enrutados, pero antes de que salgan de la interfaz de red. (se usa con tabla `nat`) |
+| DOCKER      | Cadena utilizada por Docker para gestionar reglas específicas                                                                       |
 
 ## Direcciones IP
 
