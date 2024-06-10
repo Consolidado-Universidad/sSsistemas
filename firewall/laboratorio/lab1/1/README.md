@@ -43,6 +43,9 @@ iptables -A INPUT -s 192.168.0.1 -j ACCEPT
 # Permitir acceso al puerto MySQL (3306) para el DBA (ejemplo: 192.168.0.2)
 iptables -A INPUT -p tcp -s 192.168.0.2 --dport 3306 -j ACCEPT
 
+# Cerramos acceso al puerto MySQL (3306) para todos los demás
+iptables −A INPUT −p tcp −−dport 3306 −j DROP
+
 # Permitir acceso al puerto FTP (21) para el operador (ejemplo: 192.168.0.3)
 iptables -A INPUT -p tcp -s 192.168.0.3 --dport 20,21 -j ACCEPT
 """
@@ -55,7 +58,13 @@ iptables -A INPUT -p tcp --dport 80 -j ACCEPT
 
 # Permitir acceso al puerto HTTPS (443) para todos
 iptables -A INPUT -p tcp --dport 443 -j ACCEPT
+
+# Ceramos el resto de los puertos
+iptables -A INPUT -p tcp --dport 1:1024 -j DROP
+iptables -A INPUT -p udp --dport 1:1024 -j DROP
 ```
+
+
 
 ### Reglas Adicionales para Seguridad
 

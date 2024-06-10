@@ -40,8 +40,12 @@ iptables -A FORWARD -m state --state ESTABLISHED,RELATED -j ACCEPT
 # Permitir acceso de la red local a Internet
 iptables -A FORWARD -i eth1 -o eth0 -s 192.168.10.0/24 -j ACCEPT
 
+# Permitr el acceso local a firewall
+iptables −A INPUT −s 192.168.10.0/24 −i eth1 −j ACCEPT
+
 # Enmascarar el tráfico saliente desde la LAN
 iptables -t nat -A POSTROUTING -s 192.168.10.0/24 -o eth0 -j MASQUERADE
+
 ```
 
 #### 5. Acceso público a los puertos HTTP (80) y HTTPS (443) del servidor en la DMZ
@@ -58,13 +62,29 @@ iptables -t nat -A PREROUTING -i eth0 -p tcp --dport 443 -j DNAT --to-destinatio
 #### 6. Acceso del servidor en la DMZ a la base de datos en la LAN
 ```bash
 # Permitir acceso a la base de datos desde la DMZ
-iptables -A FORWARD -p tcp -s 192.168.3.1 -d 192.168.10.2 --dport 3306 -j ACCEPT
+iptables −A FORWARD −s 192.168.3.2 −d 192.168.10.5 −p tcp −−dport 5432 −j ACCEPT
+iptables −A FORWARD −s 192.168.10.5 −d 192.168.3.2 −p tcp −−sport 5432 −j ACCEPT
+
+# permitimos abrir el Terminal server de la DMZ desde la LAN
+iptables −A FORWARD −s 192.168.10.0/24 −d 192.168.3.2 −p tcp −−sport 1024:65535 −−dport 3389 −j ACCEPT
+
+# Se debe hacer en uno y otro sentido …
+iptables −A FORWARD −s 192.168.3.2 −d 192.168.10.0/24 −p tcp −−sport 3389 −−dport 1024:65535 −j ACCEPT
 ```
 
 #### 7. Bloquear el resto de acceso de la DMZ hacia la LAN
 ```bash
 # Bloquear todo el tráfico de la DMZ hacia la LAN excepto lo permitido
 iptables -A FORWARD -s 192.168.3.0/24 -d 192.168.10.0/24 -j DROP
+
+# Cerramos el acceso de la DMZ al propio firewall
+iptables −A INPUT −s 192.168.3.0/24 −i eth2 −j DROP
+
+# Cerramos el rango de puerto bien conocido
+iptables −A INPUT −s 0.0.0.0/0 −p tcp −dport 1:1024 −j DROP
+iptables −A INPUT −s 0.0.0.0/0 −p udp −dport 1:1024 −j DROP
+# Cerramos un puerto de gestión: webmin
+iptables −A INPUT −s 0.0.0.0/0 −p tcp −dport 10000 −j DROP
 ```
 
 ### Problemas del Esquema Anterior (Sin DMZ)

@@ -100,5 +100,3 @@ iptables -A FORWARD -p udp -s 192.168.0.5 -d 192.168.3.5 --sport 5432 -j ACCEPT
 iptables -A INPUT -m state --state ESTABLISHED,RELATED -j ACCEPT
 iptables -A FORWARD -m state --state ESTABLISHED,RELATED -j ACCEPT
 ```
-
-Con estas reglas, hemos cubierto los escenarios mencionados para configurar el firewall con `iptables`.

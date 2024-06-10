@@ -50,10 +50,10 @@
 
 ## Interfaz de Red
 
-| Argumento | Significado                                      |
-| --------- | ------------------------------------------------ |
-| -i        | Especifica la interfaz de red de entrada (input) |
-| -o        | Especifica la interfaz de red de salida (output) |
+| Argumento | Significado                                                                                                                                                                  |
+| --------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| -i        | Especifica la interfaz de red de entrada para los paquetes. Se utiliza en las reglas que afectan a los paquetes que están entrando al sistema desde una interfaz específica. |
+| -o        | Especifica la interfaz de red de salida para los paquetes. Se utiliza en las reglas que afectan a los paquetes que están saliendo del sistema hacia una interfaz específica. |
 
 ## Objetivos (Targets)
 
